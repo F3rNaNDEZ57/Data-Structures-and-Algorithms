@@ -18,7 +18,7 @@ class BST {
 
     public treeNode insert(treeNode root, int data) {
         if( root == null) {
-          return createNewNode(data);
+            return createNewNode(data);
         }
 
         if(data < root.data){
