@@ -9,6 +9,7 @@ class treeNode {
 
 class BST {
 
+    // INSERTION
     private treeNode createNewNode(int data){
         treeNode node = new treeNode();
         node.data = data;
@@ -30,6 +31,7 @@ class BST {
         return root;
     }
 
+    // DELETION
     public treeNode deleteNode(treeNode root, int data){
         if (root == null){
             return null;
@@ -63,8 +65,33 @@ class BST {
         return minValue;
     }
 
+    //TRAVERSAL AND PRINTING
+    public void inOrderTraversal(treeNode node) { // left -> root -> right
+        if (node != null) {
+            inOrderTraversal(node.left);
+            System.out.print(node.data + " ");
+            inOrderTraversal(node.right);
+        }
+    }
+    
+    public void preOrderTraversal(treeNode node) { // root -> left -> right
+        if (node != null) {
+            System.out.print(node.data + " ");
+            preOrderTraversal(node.left);
+            preOrderTraversal(node.right);
+        }
+    }
+
+    public void postOrderTraversal(treeNode node) { // left -> right -> root
+        if (node != null) {
+            postOrderTraversal(node.left);
+            postOrderTraversal(node.right);
+            System.out.print(node.data + " ");
+        }
+    }
 
 
+    //DRAWING
     public void draw(treeNode root) {
         JFrame frame = new JFrame("Binary Search Tree");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,29 +163,39 @@ public class Main {
         a.draw(root);
 
 
-        // this is the tree that we use to so any changes
-        treeNode root1 = null;
-        BST b = new BST();
-        root1 = b.insert(root1,10);
-        root1 = b.insert(root1,20);
-        root1 = b.insert(root1,5);
-        root1 = b.insert(root1,6);
-        root1 = b.insert(root1,4);
-        root1 = b.insert(root1,15);
-        root1 = b.insert(root1,25);
-        root1 = b.insert(root1,35);
-        root1 = b.insert(root1,1);
-        root1 = b.insert(root1,2);
-        root1 = b.insert(root1,21);
-        root1 = b.insert(root1,34);
-        root1 = b.insert(root1,22);
-        root1 = b.insert(root1,0);
-        root1 = b.insert(root1,999);
-        root1 = b.insert(root1,11);
-        root1 = b.insert(root1,3);
+        System.out.println("In Order Traversal -:",inline);
+        a.inOrderTraversal(root);
+        System.out.println();
+        System.out.println("Pre Order Traversal -:");
+        a.preOrderTraversal(root);
+        System.out.println();
+        System.out.println("Post Order Traversal -:");
+        a.postOrderTraversal(root);
 
-        root1 = b.deleteNode(root1, 20);
-        root1 = b.deleteNode(root1, 5);
-        b.draw(root1);
+
+//        // this is the tree that we use to so any changes
+//        treeNode root1 = null;
+//        BST b = new BST();
+//        root1 = b.insert(root1,10);
+//        root1 = b.insert(root1,20);
+//        root1 = b.insert(root1,5);
+//        root1 = b.insert(root1,6);
+//        root1 = b.insert(root1,4);
+//        root1 = b.insert(root1,15);
+//        root1 = b.insert(root1,25);
+//        root1 = b.insert(root1,35);
+//        root1 = b.insert(root1,1);
+//        root1 = b.insert(root1,2);
+//        root1 = b.insert(root1,21);
+//        root1 = b.insert(root1,34);
+//        root1 = b.insert(root1,22);
+//        root1 = b.insert(root1,0);
+//        root1 = b.insert(root1,999);
+//        root1 = b.insert(root1,11);
+//        root1 = b.insert(root1,3);
+//
+//        root1 = b.deleteNode(root1, 20);
+//        root1 = b.deleteNode(root1, 5);
+//        b.draw(root1);
     }
 }
