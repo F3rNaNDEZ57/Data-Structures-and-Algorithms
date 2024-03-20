@@ -65,8 +65,11 @@ class BST {
         return minValue;
     }
 
+
+
+
     //TRAVERSAL AND PRINTING
-    public void inOrderTraversal(treeNode node) { // left -> root -> right
+    public void inOrderTraversal(treeNode node) { // left -> root -> right and this is also in Ascending Order
         if (node != null) {
             inOrderTraversal(node.left);
             System.out.print(node.data + " ");
@@ -89,6 +92,18 @@ class BST {
             System.out.print(node.data + " ");
         }
     }
+
+    public void inOrderTraversalDescending(treeNode node) { // right -> root -> left and this is also in Descending Order
+        if (node != null) {
+            inOrderTraversalDescending(node.right);
+            System.out.print(node.data + " ");
+            inOrderTraversalDescending(node.left);
+        }
+    }
+
+
+
+
 
 
     //DRAWING
@@ -142,6 +157,7 @@ public class Main {
         treeNode root = null;
         BST a = new BST();
 
+        root = a.insert(root,12);
         root = a.insert(root,10);
         root = a.insert(root,20);
         root = a.insert(root,5);
@@ -162,7 +178,7 @@ public class Main {
         a.draw(root);
 
 
-        System.out.println("In Order Traversal -:",inline);
+        System.out.println("In Order Traversal -:");
         a.inOrderTraversal(root);
         System.out.println();
         System.out.println("Pre Order Traversal -:");
@@ -170,7 +186,8 @@ public class Main {
         System.out.println();
         System.out.println("Post Order Traversal -:");
         a.postOrderTraversal(root);
-
-
+        System.out.println();
+        System.out.println("In Order Traversal Descending -:");
+        a.inOrderTraversalDescending(root);
     }
 }
