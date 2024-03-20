@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-
 class treeNode {
     int data;
     treeNode left;
@@ -8,18 +7,17 @@ class treeNode {
 }
 
 class BST {
-
-    // INSERTION
-    private treeNode createNewNode(int data){
+    private treeNode createNode(int data) {
         treeNode node = new treeNode();
         node.data = data;
         node.left = null;
         node.right = null;
         return node;
     }
+
     public treeNode insert(treeNode root, int data){
         if (root == null){
-            return createNewNode(data);
+            return createNode(data);
         }
 
         if (data < root.data){
@@ -31,7 +29,6 @@ class BST {
         return root;
     }
 
-    // DELETION
     public treeNode deleteNode(treeNode root, int data){
         if (root == null){
             return null;
@@ -42,56 +39,68 @@ class BST {
         } else if (data > root.data) {
             root.right = deleteNode(root.right, data);
         }else{
-
-            if (root.left == null){
+            if(root.left == null){
                 return root.right;
             } else if (root.right == null) {
                 return root.left;
             }
 
             root.data = minValue(root.right);
-            root.right = deleteNode(root.right,root.data);
-
+            root.right = deleteNode(root.right, root.data);
         }
         return root;
     }
 
     private int minValue(treeNode root){
         int minValue = root.data;
-        while(root.left != null){
+        while (root.left != null){
             root = root.left;
             minValue = root.data;
         }
         return minValue;
     }
 
-    //TRAVERSAL AND PRINTING
-    public void inOrderTraversal(treeNode node) { // left -> root -> right
-        if (node != null) {
-            inOrderTraversal(node.left);
-            System.out.print(node.data + " ");
-            inOrderTraversal(node.right);
+    public void inOrderTraversal(treeNode root){
+        if (root != null){
+            inOrderTraversal(root.left);
+            System.out.print(root.data+" ");
+            inOrderTraversal(root.right);
         }
     }
 
-    public void preOrderTraversal(treeNode node) { // root -> left -> right
-        if (node != null) {
-            System.out.print(node.data + " ");
-            preOrderTraversal(node.left);
-            preOrderTraversal(node.right);
+    public void preOrderTraversal(treeNode root){
+        if (root != null){
+            System.out.print(root.data+" ");
+            preOrderTraversal(root.left);
+            preOrderTraversal(root.right);
         }
     }
 
-    public void postOrderTraversal(treeNode node) { // left -> right -> root
-        if (node != null) {
-            postOrderTraversal(node.left);
-            postOrderTraversal(node.right);
-            System.out.print(node.data + " ");
+    public void postOrderTraversal(treeNode root){
+        if (root != null){
+            preOrderTraversal(root.left);
+            preOrderTraversal(root.right);
+            System.out.print(root.data+" ");
         }
     }
 
 
-    //DRAWING
+    // Search for a node in the tree
+    public treeNode searchNode(treeNode root, int data){
+        if (root == null || root.data == data){
+            return root;
+        }
+
+        if (data < root.data) {
+            return searchNode(root.left, data);
+        } else {
+            return searchNode(root.right, data);
+        }
+    }
+
+
+
+
     public void draw(treeNode root) {
         JFrame frame = new JFrame("Binary Search Tree");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -133,12 +142,11 @@ class BST {
         }
     }
 }
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
+        // this is the original tree use this to generate original image if the tree
         treeNode root = null;
         BST a = new BST();
 
@@ -161,16 +169,18 @@ public class Main {
         root = a.insert(root,3);
         a.draw(root);
 
+        root = a.searchNode(root,22);
+        if (root != null){
+            System.out.println("NODE that have value "+ root.data +" is FOUND!!");
+        }else {
+            System.out.println("NODE is NOTFOUND!!");
+        }
 
-        System.out.println("In Order Traversal -:",inline);
-        a.inOrderTraversal(root);
-        System.out.println();
-        System.out.println("Pre Order Traversal -:");
-        a.preOrderTraversal(root);
-        System.out.println();
-        System.out.println("Post Order Traversal -:");
-        a.postOrderTraversal(root);
-
-
+        root = a.searchNode(root,121);
+        if (root != null){
+            System.out.println("NODE that have value "+ root.data +" is FOUND!!");
+        }else {
+            System.out.println("NODE is NOTFOUND!!");
+        }
     }
 }
