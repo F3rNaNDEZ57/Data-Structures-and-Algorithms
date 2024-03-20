@@ -8,7 +8,9 @@ class treeNode {
 }
 
 class BST {
-    public treeNode createNewNode(int k) {
+
+    // create a new node
+    private treeNode createNewNode(int k) {
         treeNode a = new treeNode();
         a.data = k;
         a.left = null;
@@ -16,6 +18,7 @@ class BST {
         return a;
     }
 
+    // insert a new node
     public treeNode insert(treeNode root, int data) {
         if( root == null) {
           return createNewNode(data);
@@ -29,6 +32,57 @@ class BST {
         }
         return root;
     }
+
+    // delete a node
+    public treeNode deleteNode(treeNode root, int value) {
+        if(root == null) {
+            return null;
+        }
+
+        // find the node to be deleted
+        if(value < root.data) {
+            root.left = deleteNode(root.left, value);
+        }
+        else if(value > root.data){
+            root.right = deleteNode(root.right, value);
+        }
+        else{
+            // if the node has one child or no child
+            if(root.left == null){
+                return root.right;
+            }
+            else if(root.right == null){
+                return root.left;
+            }
+
+            // if the node has two children
+            root.data = minValue(root.right);
+            root.right = deleteNode(root.right, root.data);
+        }
+        return root;
+    }
+
+    // find the minimum value of a branch
+    private int minValue(treeNode root){
+        int minValue = root.data;
+        while(root.left != null){
+            minValue = root.left.data;
+            root = root.left;
+        }
+        return minValue;
+    }
+
+
+
+
+
+
+
+
+
+
+    // draw the tree BONUS
+
     public void draw(treeNode root) {
         JFrame frame = new JFrame("Binary Search Tree");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,6 +151,7 @@ public class Main {
         root = a.insert(root,11);
         root = a.insert(root,3);
 
+//        root = a.deleteNode(root, 20);
 
         a.draw(root);
     }
