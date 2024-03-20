@@ -73,7 +73,7 @@ class BST {
             inOrderTraversal(node.right);
         }
     }
-    
+
     public void preOrderTraversal(treeNode node) { // root -> left -> right
         if (node != null) {
             System.out.print(node.data + " ");
@@ -138,8 +138,7 @@ class BST {
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
-        // this is the original tree use this to generate original image if the tree
+        
         treeNode root = null;
         BST a = new BST();
 
@@ -173,29 +172,5 @@ public class Main {
         a.postOrderTraversal(root);
 
 
-//        // this is the tree that we use to so any changes
-//        treeNode root1 = null;
-//        BST b = new BST();
-//        root1 = b.insert(root1,10);
-//        root1 = b.insert(root1,20);
-//        root1 = b.insert(root1,5);
-//        root1 = b.insert(root1,6);
-//        root1 = b.insert(root1,4);
-//        root1 = b.insert(root1,15);
-//        root1 = b.insert(root1,25);
-//        root1 = b.insert(root1,35);
-//        root1 = b.insert(root1,1);
-//        root1 = b.insert(root1,2);
-//        root1 = b.insert(root1,21);
-//        root1 = b.insert(root1,34);
-//        root1 = b.insert(root1,22);
-//        root1 = b.insert(root1,0);
-//        root1 = b.insert(root1,999);
-//        root1 = b.insert(root1,11);
-//        root1 = b.insert(root1,3);
-//
-//        root1 = b.deleteNode(root1, 20);
-//        root1 = b.deleteNode(root1, 5);
-//        b.draw(root1);
     }
 }
