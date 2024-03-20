@@ -67,7 +67,7 @@ class BST {
         int minValue = root.data;
         while(root.left != null){
             root = root.left;
-            minValue = root.left.data;
+            minValue = root.data;
         }
         return minValue;
     }
@@ -120,9 +120,8 @@ class BST {
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        // this is the original tree use this to generate original image if the tree
         treeNode root = null;
-
         BST a = new BST();
 
         root = a.insert(root,10);
@@ -142,11 +141,32 @@ public class Main {
         root = a.insert(root,999);
         root = a.insert(root,11);
         root = a.insert(root,3);
-
-        root = a.deleteNode(root, 20);
         a.draw(root);
-        root = a.deleteNode(root, 34);
-//        a.draw(root);
 
+
+        // this is the tree that we use to so any changes
+        treeNode root1 = null;
+        BST b = new BST();
+        root1 = b.insert(root1,10);
+        root1 = b.insert(root1,20);
+        root1 = b.insert(root1,5);
+        root1 = b.insert(root1,6);
+        root1 = b.insert(root1,4);
+        root1 = b.insert(root1,15);
+        root1 = b.insert(root1,25);
+        root1 = b.insert(root1,35);
+        root1 = b.insert(root1,1);
+        root1 = b.insert(root1,2);
+        root1 = b.insert(root1,21);
+        root1 = b.insert(root1,34);
+        root1 = b.insert(root1,22);
+        root1 = b.insert(root1,0);
+        root1 = b.insert(root1,999);
+        root1 = b.insert(root1,11);
+        root1 = b.insert(root1,3);
+
+        root1 = b.deleteNode(root1, 20);
+        root1 = b.deleteNode(root1, 5);
+        b.draw(root1);
     }
 }

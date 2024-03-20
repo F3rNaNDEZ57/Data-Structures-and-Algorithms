@@ -111,6 +111,8 @@ class BST {
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+
+        // this is the original tree use this to generate original image if the tree
         treeNode root = null;
         BST a = new BST();
 
@@ -133,6 +135,8 @@ public class Main {
         root = a.insert(root,3);
         a.draw(root);
 
+
+        // this is the tree that we use to so any changes
         treeNode root1 = null;
         BST b = new BST();
         root1 = b.insert(root1,10);
@@ -154,6 +158,7 @@ public class Main {
         root1 = b.insert(root1,3);
 
         root1 = b.deleteNode(root1, 20);
+        root1 = b.deleteNode(root1, 5);
         b.draw(root1);
     }
 }
