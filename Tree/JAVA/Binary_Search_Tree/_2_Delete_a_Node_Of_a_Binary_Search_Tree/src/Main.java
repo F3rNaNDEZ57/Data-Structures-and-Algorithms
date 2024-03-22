@@ -166,7 +166,6 @@ public class Main {
         root1 = b.insert(root1,3);
 
         root1 = b.deleteNode(root1, 20);
-        root1 = b.deleteNode(root1, 5);
         b.draw(root1);
     }
 }
